@@ -1,0 +1,140 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Qarabag</title>
+</head>
+
+<body>
+
+    <header class="header menu-header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+
+                </div>
+                <ul class="head_menu">
+                    <li><a href="{% url 'home' %}">{% trans 'Ana Səhifə' %}</a></li>
+                    <li><a href=""></a>{% trans 'Haqqımızda' %}</li>
+                    <li><a href="{% url 'menu' %}">{% trans 'Menu' %}</a></li>
+                    <li><a href="{% url 'gallery' %}">{% trans 'Qalereya' %}</a></li>
+                    <li><a href="{% url 'contact' %}">{% trans 'Əlaqə' %}</a></li>
+                    
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+
+
+    <div class="galery">
+        <h1>{% trans 'QALEREYA' %}</h1>
+         
+         <div class="resim1">
+            {% for g in gallery %}
+         {% if forloop.counter < 4 %}
+          {% if forloop.counter|divisibleby:3 %}
+        
+            <img style="padding-right:15px;" src="{{g.image.url}}" alt="">
+       
+        {% else %}
+        
+            <img style="padding-left:15px;" src="{{g.image.url}}" alt="">
+        
+        {% endif %}
+        {% endif %}
+
+        {% endfor%}
+        
+        </div>
+        <br>
+        <div class="resim1">
+        {% for g in gallery %}
+        {% if forloop.counter > 3 and forloop.counter < 7  %}
+          {% if forloop.counter|divisibleby:3 %}
+        
+            <img style="padding-right:15px;" src="{{g.image.url}}" alt="">
+       
+        {% else %}
+        
+            <img style="padding-left:15px;" src="{{g.image.url}}" alt="">
+        
+        {% endif %}
+        {% endif %}
+        {% endfor%}
+    </div>
+    <br>
+    <div class="resim1">
+        {% for g in gallery %}
+        {% if forloop.counter > 6 and forloop.counter < 10  %}
+          {% if forloop.counter|divisibleby:3 %}
+        
+            <img style="padding-right:15px;" src="{{g.image.url}}" alt="">
+       
+        {% else %}
+        
+            <img style="padding-left:15px;" src="{{g.image.url}}" alt="">
+        
+        {% endif %}
+        {% endif %}
+        {% endfor%}
+    </div>
+    
+</div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__left">
+                    <a href="index.html"><img class="footer__logo" src="img/logo.png" alt=""></a>
+                    <select name="language" id="lang_select" onchange="location=this.value;">
+                        <option value="{{request.path}}?language=en">English</option>
+                        <option value="{{request.path}}?language=az">Azərbaycan dili</option>
+                        <option value="{{request.path}}?language=ru">Русский</option>
+                        
+                    </select>
+                    <div class="footer__socials">
+                        <a href=""><img src="{% static 'img/icon_wp.svg' %}" alt=""></a>
+                        <a href=""><img src="{% static 'img/icon_fb.svg' %}" alt=""></a>
+                        <a href=""><img src="{% static 'img/icon_ins.svg' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="footer__right">
+                    <ul class="footer__list">
+                        <h3 class="footer__title">{% trans 'Məlumat' %}</h3>
+                        <li class="footer__item">
+                            <a href="Gallery/index.html" class="footer__link">{% trans 'Qalereya' %}</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="contact.html" class="footer__link">{% trans 'Əlaqə' %}</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#haqqimizda" class="footer__link">{% trans 'Haqqımızda' %}</a>
+                        </li>
+                    </ul>
+                    <ul class="footer__list">
+                        <h3 class="footer__title">{% trans 'Ünvan' %}</h3>
+                        <p class="footer__text">Neftchilar Avenue 78</p>
+                        <p class="footer__text">Monday - Sunday 09:00-02:00</p>
+                        <p class="footer__text">+994 55 123 45 67 </p>
+                    </ul>
+                </div>
+                <button class="back-to-top"><img src="{% static 'img/icon_toTop.svg' %}" alt=""></button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'script/backtotop.js' %}"></script>
+    <script src="{% static 'script/index.js' %}"></script>
+
+</body>
+
+</html>

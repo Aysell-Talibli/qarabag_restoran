@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+  {% block content %}
+    <div class="menu">
+        <div class="container">
+            <div class="menu__content">
+                <h2 class="menu__title">{% trans 'Menu' %}</h2>
+                <nav class="menu__nav">
+                    <ul class="menu__list">
+                        {% for category in categories %} 
+                        <li class="menu__item">
+                        <a href="{% url 'menu' %}?category={{category}}">{{category}}</a>
+                        </li>
+                       {% endfor %}
+                    </ul> 
+                </nav>
+            </div>
+        </div>
+                {% for m in menu %}
+                {% if forloop.counter|divisibleby:2 is False %}
+                <div class="menu__card">
+                    <div class="container" id="sam">
+                        <h2 class="menu__card-title" >{{m.name}}</h2>
+                        <div class="menu__card-content">
+                            <div class="menu__card-left">
+                                
+                                <ul class="menu__card-list">
+                               {% for food in m.menu_food.all %}
+                                    <li class="menu__card-item">
+                                        <p> {{food.name}}</p>
+                                        <h3>$ {{food.price}}</h3>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <img src="{{m.image.url}}" alt="">
+                        </div>
+                    </div>
+                </div>
+           
+{% else %}
+<div class="menu__card red-back">
+    <div class="container"id="nahar">
+        <h2 class="menu__card-title" >{{m.name}}</h2>
+        <div class="menu__card-content">
+           <img src="{{m.image.url}}" alt="">
+            <div class="menu__card-left">
+                <ul class="menu__card-list">
+                    {% for food in m.menu_food.all %}
+                    <li class="menu__card-item">
+                        <p>{{food.name}}</p>
+                        <h3>$ {{food.price}}</h3>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>{% endif %}
+{% endfor %}
+</div>
+{% endblock content %}
+

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+  {% block content %}
+    <div class="intro" id="ana-sehife">
+        <div class="container">
+            <div class="intro__content">
+                <h1 class="intro__title">Lorem ipsum. Dolor sit.</h1>
+                <p class="intro__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget lacus convallis
+                    interdum mollis amet commodo lore.</p>
+                <p class="intro__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="intro__cards">
+                    <div class="intro__card">
+                        <img src="{% static 'img/icon_time.svg' %}" alt="icon">
+                        <p>Monday - Friday 10:00-00:00 <br> Saturday - Sunday 09:00-02:00</p>
+                    </div>
+                    <div class="intro__card">
+                        <img src="{% static 'img/icon_location.svg' %}" alt="icon">
+                        <p>Neftchilar Avenue 78, Seaside Boulevard, Baku</p>
+                    </div>
+                    <div class="intro__card">
+                        <img src="{% static 'img/icon_phone.svg' %}" alt="icon">
+                        <p>+994 55 123 45 67</p>
+                        <p>+994 55 123 45 67</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About -->
+    <div class="haqqimizda" id="haqqimizda">
+        
+        <h2>{% trans "Haqqımızda" %}</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloribus modi
+            rerum magni autem fuga sequi quia labore possimus qui facilis et nostrum obcaecati,
+            eos consequatur sunt temporibus asperiores. Et vitae, numquam eveniet sapiente distinctio
+            sint necessitatibus harum neque commodi culpa accusantium, ducimus velit hic tenetur impedi
+            t dolore! Dolorum, quaerat. Dicta neque quidem debitis earum odit harum adipisci eius sed et
+            voluptas illum ut omnis beatae amet accusantium atque, corporis quisquam natus illo qui ratione
+            architecto. Iste recusandae maxime, amet atque libero provident est aliquam distinctio perspiciatis
+            quasi ducimus laborum enim sequi sed adipisci sint fugit suscipit facilis consequatur exercitationem
+            id voluptates facere consequuntur. Commodi, a eaque. Placeat obcaecati nostrum inventore quam officiis
+            dicta,
+            nobis labore? Porro voluptatem eaque cum eum velit saepe, sed aliquid totam molestias ipsum numquam nihil
+            laudantium voluptate tempore! Aspernatur, perferendis culpa possimus incidunt minus voluptates dolores
+            deleniti. Tempore ex at fuga facilis, quis similique. Iste aut et, doloremque cumque ducimus rem commodi
+            hic quaerat ullam rerum facere? Rem veritatis quasi recusandae deleniti quos tempora tempore aut qui?
+            Perferendis, magni reiciendis illum inventore quo nihil vitae ea? Quas, dolores harum alias repudiandae non
+            id sit vitae quae esse deleniti aspernatur nihil sapiente sunt at mollitia vero ea possimus ex facilis
+            eveniet eaque repellat. Animi omnis officia at obcaecati doloremque repellendus nisi ea nemo exercitationem
+
+        </p>
+    </div>
+
+
+    <div class="menu">
+        <div class="container">
+            <div class="menu__content">
+                <h2 class="menu__title">{% trans 'Menu' %}</h2>
+                <div class="carousel">
+                    {% for m in menu %}
+                    <div class="carousel_card">
+                        <img src="{{m.image.url}}" alt="card">
+                        <div>
+                            <h4>{% trans 'Menyuya bax' %}</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+                <a href="{% url 'menu' %}"><button class="btn">{% trans 'Menu' %}</button></a>
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+    

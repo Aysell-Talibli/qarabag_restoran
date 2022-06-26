@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <div class="contact">
+        <div class="container">
+            <h2 class="contact-title">{% trans 'Əlaqə' %}</h2>
+            <div class="contact__content">
+                <div class="contact-text">
+                    <p>Neftchilar Avenue 78, Seaside Boulevard, Baku</p>
+                    <p>Monday - Friday 10:00-00:00
+                        Saturday - Sunday 09:00-02:00 </p>
+                    <p>+994 55 123 45 67
+                        +994 55 123 45 67
+                    </p>
+                </div>
+                <img src="{% static 'img/contact.png' %}" alt="">
+            </div>
+        </div>
+        <div class="contact__bottom">
+            <div class="container">
+                <div class="bottom">
+                    <div>
+                        Neftchilar Avenue 78, Seaside Boulevard, Baku
+                        <a href="https://www.google.com/maps/place/Qaraba%C4%9F+restoran%C4%B1/@40.3968825,49.789374,17z/data=!3m1!4b1!4m5!3m4!1s0x4030877145237c17:0x7cc0935d38bb0a92!8m2!3d40.3968784!4d49.791568"><button>View in Map</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
