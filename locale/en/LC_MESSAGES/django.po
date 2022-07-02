@@ -34,6 +34,9 @@ msgstr "Menu"
 msgid "Qalereya"
 msgstr "Gallery"
 
+msgid "QALEREYA"
+msgstr "GALLERY"
+
 #: .\base\templates\base.html:29
 msgid "Əlaqə"
 msgstr "Contact"
