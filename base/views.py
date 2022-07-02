@@ -4,7 +4,8 @@ from django.utils import translation
 
 from django.conf import settings
 from django.shortcuts import redirect
-def home(request):
+
+def change_language(request):
     language='az'
     translation.activate(language)
     if 'language' in request.GET and request.GET['language']:
@@ -14,22 +15,14 @@ def home(request):
                 translation.activate(language)
             if language == 'en': 
                 translation.activate(language)
-            
-    
+def home(request):
+    change_language(request)
     menu=Menu.objects.order_by('-pk')[:4]
     return render(request,'index.html',{'menu':menu})
     
     
 def menu(request):
-    language='az'
-    translation.activate(language)
-    if 'language' in request.GET and request.GET['language']:
-        language = request.GET['language']
-        if language in ['ru','en']:
-            if language == 'ru': 
-                translation.activate(language)
-            if language == 'en': 
-                translation.activate(language)
+    change_language(request)
     category=request.GET.get('category')
     if(category==None):
         menu=Menu.objects.all()
@@ -39,26 +32,10 @@ def menu(request):
     return render(request,'menu.html',{'menu':menu, 'categories': categories})
     
 def gallery(request):
+    change_language(request)
     gallery=Gallery.objects.all()
-    language='az'
-    translation.activate(language)
-    if 'language' in request.GET and request.GET['language']:
-        language = request.GET['language']
-        if language in ['ru','en']:
-            if language == 'ru': 
-                translation.activate(language)
-            if language == 'en': 
-                translation.activate(language)
     return render(request,'gallery.html',{'gallery':gallery})
 
 def contact(request):
-    language='az'
-    translation.activate(language)
-    if 'language' in request.GET and request.GET['language']:
-        language = request.GET['language']
-        if language in ['ru','en']:
-            if language == 'ru': 
-                translation.activate(language)
-            if language == 'en': 
-                translation.activate(language)
+    change_language(request)
     return render(request,'contact.html')
